@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Zidan App</string>
+    <string name="app_author">Ahmad Zidan Ali</string>
+    <string name="app_copyright">© 2023 - 2024 Ahmad Zidan Ali - All Rights Reserved.</string>
+
+    <!--Home-->
+    <string name="timeSpent">%d detik</string>
+
+    <!--Common Strings-->
+    <string name="welcome">Welcome!</string>
+    <string name="welcomeback">Welcome Back!</string>
+
+    <!--Placeholder-->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="placeholder_title">Lorem Ipsum</string>
+    <string name="placeholder_content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+
+    <!--AuthActivity Strings-->
+    <string name="title_activity_auth_login">Login</string>
+    <string name="action_activity_auth_login">Login</string>
+    <string name="desc_activity_auth_login">Silahkan masukkan alamat email dan password anda untuk melanjutkan</string>
+    <string name="title_activity_auth_signin">Sign in</string>
+    <string name="action_activity_auth_signin">Sign in</string>
+    <string name="desc_activity_auth_signin">Registrasi untuk mendapatkan benefit lainnya!</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_username">Nama Pengguna</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_passwordConfirm">Konfirmasi Password</string>
+    <string name="action_forgetPassword">Lupa password?</string>
+    <string name="prompt_tos">Dengan ini anda menyatakan setuju dengan Terms of Agreement kami</string>
+    <string name="prompt_rememberMe">Selalu masuk</string>
+
+</resources>

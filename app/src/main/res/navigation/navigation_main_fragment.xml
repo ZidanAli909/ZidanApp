@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main_fragment"
+    app:startDestination="@id/main_fragment_home">
+
+    <fragment
+        android:id="@+id/main_fragment_home"
+        android:name="com.zidan.zidanapp.MainFragment.MainHomeFragment"
+        tools:layout="@layout/fragment_main_home"/>
+
+    <fragment
+        android:id="@+id/main_fragment_map"
+        android:name="com.zidan.zidanapp.MainFragment.MainMapFragment"
+        tools:layout="@layout/fragment_main_map"/>
+
+    <fragment
+        android:id="@+id/main_fragment_list"
+        android:name="com.zidan.zidanapp.MainFragment.MainListFragment"
+        tools:layout="@layout/fragment_main_list"/>
+
+</navigation>
