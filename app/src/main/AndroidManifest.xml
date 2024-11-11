@@ -13,6 +13,12 @@
         android:theme="@style/Theme.ZidanApp2"
         tools:targetApi="31">
         <activity
+            android:name=".DiaryDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DiaryCreateActivity"
+            android:exported="false" />
+        <activity
             android:name=".AuthActivity"
             android:exported="true">
             <intent-filter>
@@ -23,12 +29,15 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
+    <!--App Permissions-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
 </manifest>

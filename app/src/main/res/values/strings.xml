@@ -23,11 +23,22 @@
     <string name="action_activity_auth_signin">Sign in</string>
     <string name="desc_activity_auth_signin">Registrasi untuk mendapatkan benefit lainnya!</string>
     <string name="prompt_email">Email</string>
+    <string name="prompt_email_placeholder">emailsaya@email.com</string>
     <string name="prompt_username">Nama Pengguna</string>
+    <string name="prompt_username_placeholder">Username Saya</string>
     <string name="prompt_password">Password</string>
     <string name="prompt_passwordConfirm">Konfirmasi Password</string>
     <string name="action_forgetPassword">Lupa password?</string>
     <string name="prompt_tos">Dengan ini anda menyatakan setuju dengan Terms of Agreement kami</string>
     <string name="prompt_rememberMe">Selalu masuk</string>
+
+    <!--Diary Strings-->
+    <string name="title_activity_diaryCreate">Membuat Diary</string>
+    <string name="diary_prompt_title">Judul</string>
+    <string name="diary_prompt_title_placeholder">Judul anda disini...</string>
+    <string name="diary_prompt_location">Lokasi</string>
+    <string name="diary_prompt_timeDate">Waktu dan Tanggal</string>
+    <string name="diary_prompt_description">Deskripsi</string>
+    <string name="diary_prompt_description_placeholder">Deskripsi diari anda disini...</string>
 
 </resources>
