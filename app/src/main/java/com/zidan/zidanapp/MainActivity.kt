@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity() {
     private fun initViews() {
         // Bottom navigation
         with (binding) {
-            val navHostFragment = supportFragmentManager.findFragmentById(MainFCV.id) as NavHostFragment
-            MainBNV.setupWithNavController(navHostFragment.navController)
+            val navHostFragment = supportFragmentManager.findFragmentById(mainFragmentContainerView.id) as NavHostFragment
+            mainBottomNavigationView.setupWithNavController(navHostFragment.navController)
         }
     }
 

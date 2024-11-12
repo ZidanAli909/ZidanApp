@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_main_fragment"
-    app:startDestination="@id/main_fragment_home">
+    app:startDestination="@id/mainFragment_home">
 
     <fragment
-        android:id="@+id/main_fragment_home"
+        android:id="@+id/mainFragment_home"
         android:name="com.zidan.zidanapp.MainFragment.MainHomeFragment"
         tools:layout="@layout/fragment_main_home"/>
 
     <fragment
-        android:id="@+id/main_fragment_map"
+        android:id="@+id/mainFragment_map"
         android:name="com.zidan.zidanapp.MainFragment.MainMapFragment"
         tools:layout="@layout/fragment_main_map"/>
 
     <fragment
-        android:id="@+id/main_fragment_list"
-        android:name="com.zidan.zidanapp.MainFragment.MainListFragment"
-        tools:layout="@layout/fragment_main_list"/>
+        android:id="@+id/mainFragment_collection"
+        android:name="com.zidan.zidanapp.MainFragment.MainCollectionFragment"
+        tools:layout="@layout/fragment_main_collection"/>
 
 </navigation>

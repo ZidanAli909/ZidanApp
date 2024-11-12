@@ -3,24 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_auth_activity"
-    app:startDestination="@id/authLoginFragment">
+    app:startDestination="@id/authFragment_login">
 
     <fragment
-        android:id="@+id/authLoginFragment"
+        android:id="@+id/authFragment_login"
         android:name="com.zidan.zidanapp.AuthFragment.AuthLoginFragment"
         android:label="fragment_auth_login"
         tools:layout="@layout/fragment_auth_login" >
         <action
             android:id="@+id/action_authLoginFragment_to_authSigninFragment"
-            app:destination="@id/authSigninFragment" />
+            app:destination="@id/authFragment_signIn" />
     </fragment>
+
     <fragment
-        android:id="@+id/authSigninFragment"
+        android:id="@+id/authFragment_signIn"
         android:name="com.zidan.zidanapp.AuthFragment.AuthSigninFragment"
         android:label="fragment_auth_signin"
         tools:layout="@layout/fragment_auth_signin" >
         <action
             android:id="@+id/action_authSigninFragment_to_authLoginFragment"
-            app:destination="@id/authLoginFragment" />
+            app:destination="@id/authFragment_login" />
     </fragment>
 </navigation>

@@ -17,7 +17,7 @@ class AuthSigninFragment : Fragment() {
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
-            view?.findNavController()?.popBackStack(R.id.authLoginFragment, false)
+            view?.findNavController()?.popBackStack(R.id.authFragment_login, false)
         }
     }
 
@@ -44,9 +44,6 @@ class AuthSigninFragment : Fragment() {
                 val homeIntent = Intent(requireActivity(),MainActivity::class.java)
                 homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(homeIntent)
-            }
-            buttonLogin.setOnClickListener {
-                view?.findNavController()?.navigate(R.id.action_authSigninFragment_to_authLoginFragment)
             }
         }
     }

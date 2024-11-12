@@ -4,6 +4,10 @@
     <string name="app_copyright">© 2023 - 2024 Ahmad Zidan Ali - All Rights Reserved.</string>
 
     <!--Home-->
+    <string name="title_home_fragment_home">Beranda</string>
+    <string name="title_home_fragment_maps">Peta</string>
+    <string name="title_home_fragment_collections">Koleksi</string>
+
     <string name="timeSpent">%d detik</string>
 
     <!--Common Strings-->
@@ -37,7 +41,9 @@
     <string name="diary_prompt_title">Judul</string>
     <string name="diary_prompt_title_placeholder">Judul anda disini...</string>
     <string name="diary_prompt_location">Lokasi</string>
+    <string name="diary_prompt_location_placeholder">Jl.Jalan No.666, Kecamatan, Kelurahan, Kota, Provinsi</string>
     <string name="diary_prompt_timeDate">Waktu dan Tanggal</string>
+    <string name="diary_prompt_timeDate_placeholder">99:99 WIB - DayName, DD Month Year</string>
     <string name="diary_prompt_description">Deskripsi</string>
     <string name="diary_prompt_description_placeholder">Deskripsi diari anda disini...</string>
 
