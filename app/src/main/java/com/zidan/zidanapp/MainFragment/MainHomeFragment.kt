@@ -31,7 +31,6 @@ class MainHomeFragment : Fragment() {
         binding = FragmentMainHomeBinding.inflate(inflater, container, false)
 
         fAB_add = binding.fABAddDiary
-
         fAB_add.setOnClickListener {
             val intent = Intent(requireActivity(),DiaryCreateActivity::class.java)
             startActivity(intent)

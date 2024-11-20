@@ -46,13 +46,14 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.annotation)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.play.services.maps)
+    implementation(libs.androidx.datastore.core.android)
+    implementation(libs.androidx.datastore.preferences)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    //Lifecycle
-    implementation(libs.androidx.lifecycle.livedata.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     //Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.8.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.8.3")

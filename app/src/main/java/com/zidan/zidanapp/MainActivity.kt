@@ -1,18 +1,27 @@
 package com.zidan.zidanapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.zidan.zidanapp.ViewModel.LoginViewModel
 import com.zidan.zidanapp.databinding.ActivityMainBinding
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var toolbar: Toolbar
+    private val viewModel by viewModels<LoginViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,16 +42,33 @@ class MainActivity : AppCompatActivity() {
             val navHostFragment = supportFragmentManager.findFragmentById(mainFragmentContainerView.id) as NavHostFragment
             mainBottomNavigationView.setupWithNavController(navHostFragment.navController)
         }
+
+        toolbar = binding.mainToolbar
+        setSupportActionBar(toolbar)
     }
 
     // Options toolbar
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_toolbar, menu)
-        return super.onCreateOptionsMenu(menu)
+        return true
+        //return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        //TODO: Interact menu items
+        when (item.itemId) {
+            R.id.main_toolbar_profile -> Toast.makeText(this, "Ini adalah profil", Toast.LENGTH_SHORT).show()
+            R.id.main_toolbar_settings -> Toast.makeText(this, "Ini adalah settings", Toast.LENGTH_SHORT).show()
+            R.id.main_toolbar_logout -> {
+                lifecycleScope.launch {
+                    viewModel.setLoginStatus(false)
+                    val intent = Intent(this@MainActivity, AuthActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    finish()
+                }
+            }
+        }
+
         return super.onOptionsItemSelected(item)
     }
 }

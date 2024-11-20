@@ -41,8 +41,8 @@ class AuthSigninFragment : Fragment() {
     private fun initViews() {
         with(binding) {
             buttonSignin.setOnClickListener {
-                val homeIntent = Intent(requireActivity(),MainActivity::class.java)
-                homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                val homeIntent = Intent(activity,MainActivity::class.java)
+                homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 startActivity(homeIntent)
             }
         }
