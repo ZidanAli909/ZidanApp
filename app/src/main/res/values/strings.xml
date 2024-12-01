@@ -47,4 +47,7 @@
     <string name="diary_prompt_description">Deskripsi</string>
     <string name="diary_prompt_description_placeholder">Deskripsi diari anda disini...</string>
 
+    <!--Media Strings-->
+    <string name="title_activity_media">Memilih Media</string>
+
 </resources>

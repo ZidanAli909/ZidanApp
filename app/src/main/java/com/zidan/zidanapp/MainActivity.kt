@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             val navHostFragment = supportFragmentManager.findFragmentById(mainFragmentContainerView.id) as NavHostFragment
             mainBottomNavigationView.setupWithNavController(navHostFragment.navController)
         }
-
+        // Toolbar
         toolbar = binding.mainToolbar
         setSupportActionBar(toolbar)
     }

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- App Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_NETWORK" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ZidanApp2"
         tools:targetApi="31">
+        <activity
+            android:name=".MediaActivity"
+            android:exported="false" />
         <activity
             android:name=".DiaryDetailsActivity"
             android:exported="false"
@@ -37,10 +44,5 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
-    <!--App Permissions-->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_NETWORK"/>
 
 </manifest>
