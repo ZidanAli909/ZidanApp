@@ -1,4 +1,4 @@
-package com.zidan.zidanapp.AuthFragment
+package com.zidan.zidanapp.Fragments.Auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import com.zidan.zidanapp.MainActivity
+import com.zidan.zidanapp.Activities.MainActivity
 import com.zidan.zidanapp.R
 import com.zidan.zidanapp.ViewModel.LoginViewModel
 import com.zidan.zidanapp.databinding.FragmentAuthLoginBinding
@@ -69,7 +69,7 @@ class AuthLoginFragment : Fragment() {
                             if (checkBoxRememberMe.isChecked) password else ""
                         )
 
-                        val homeIntent = Intent(activity,MainActivity::class.java)
+                        val homeIntent = Intent(activity, MainActivity::class.java)
                         homeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                         startActivity(homeIntent)
                         activity?.finish()

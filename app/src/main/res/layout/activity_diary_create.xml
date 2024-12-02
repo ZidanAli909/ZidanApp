@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DiaryCreateActivity">
+    tools:context=".Activities.DiaryCreateActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,26 +30,6 @@
                 android:layout_marginVertical="24dp"
                 android:id="@+id/diary_Form">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/diary_prompt_title"/>
-                <EditText
-                    android:id="@+id/editText_diary_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:text="@string/diary_prompt_title_placeholder" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/diary_prompt_description"/>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -57,7 +37,22 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/diary_prompt_description_placeholder"
+                        android:hint="@string/diary_prompt_title"
+                        android:id="@+id/editText_diary_title"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/diary_prompt_description"
                         android:id="@+id/editText_diary_description"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,8 +101,8 @@
 
                 <ImageButton
                     android:id="@+id/imageButton_previewDiaryMedia"
-                    android:layout_width="320px"
-                    android:layout_height="630px"
+                    android:layout_width="120dp"
+                    android:layout_height="240dp"
                     android:background="@color/black"
                     android:scaleType="fitCenter"
                     android:src="@drawable/icon_baseline_image_24" />
@@ -137,10 +132,18 @@
         android:id="@+id/diaryCreate_actionButtons">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_confirm"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
             android:text="Publish" />
+
+        <Button
+            android:id="@+id/button_delete"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="Delete" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.zidan.zidanapp
+package com.zidan.zidanapp.Activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.zidan.zidanapp.R
 import com.zidan.zidanapp.ViewModel.LoginViewModel
 import com.zidan.zidanapp.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch

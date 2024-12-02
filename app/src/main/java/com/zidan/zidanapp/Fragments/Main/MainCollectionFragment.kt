@@ -1,15 +1,13 @@
-package com.zidan.zidanapp.MainFragment
+package com.zidan.zidanapp.Fragments.Main
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.zidan.zidanapp.R
-import com.zidan.zidanapp.databinding.FragmentMainMapBinding
 
-class MainMapFragment : Fragment() {
-    private lateinit var binding: FragmentMainMapBinding
+class MainCollectionFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +17,7 @@ class MainMapFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMainMapBinding.inflate(inflater, container, false)
-        return binding.root
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_main_collection, container, false)
     }
 }

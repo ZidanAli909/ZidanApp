@@ -1,4 +1,4 @@
-package com.zidan.zidanapp
+package com.zidan.zidanapp.Activities
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -7,15 +7,23 @@ import android.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.TransformationUtils.rotateImage
 import com.google.android.material.snackbar.Snackbar
+import com.zidan.zidanapp.Data.Model.Diary
+import com.zidan.zidanapp.R
+import com.zidan.zidanapp.ViewModel.DiaryViewModel
 import com.zidan.zidanapp.databinding.ActivityDiaryCreateBinding
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import okio.IOException
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
@@ -26,6 +34,7 @@ class DiaryCreateActivity : AppCompatActivity() {
     private lateinit var toolbar: Toolbar
     private var loadedImage: ByteArray? = null
     private var isClicked = false
+    private val diaryViewModel by viewModels<DiaryViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +58,44 @@ class DiaryCreateActivity : AppCompatActivity() {
         // Initialize
         val isEdit = if (intent.getStringExtra(INTENT_KEY) == EDIT_KEY) true else false
         with(binding) {
+            var diaryData: Diary? = null
+            val diaryId = intent.getIntExtra(INTENT_KEY_DIARY_ID, -1)
+            if (isEdit) {
+                diaryViewModel.getDiaryById(diaryId)
+                lifecycleScope.launch {
+                    diaryViewModel.stateGetDiary.collectLatest {
+                        diaryData = it
+                        editTextDiaryTitle.setText(diaryData?.title)
+                        editTextDiaryDescription.setText(diaryData?.description)
+                        Glide.with(this@DiaryCreateActivity).load(diaryData?.media).into(imageButtonPreviewDiaryMedia)
+                        loadedImage = diaryData?.media
+                    }
+                }
+            }
+
+            buttonConfirm.setOnClickListener {
+                val title = if (editTextDiaryTitle.text.isNullOrEmpty()) "Tanpa Judul" else editTextDiaryTitle.text.toString()
+                val description = if (editTextDiaryDescription.text.isNullOrEmpty()) "Tanpa deskripsi" else editTextDiaryDescription.text.toString()
+                diaryViewModel.createDiary(
+                    Diary(
+                        diaryData?.id ?: 0,
+                        title,
+                        description,
+                        loadedImage
+                    )
+                )
+                finish()
+            }
+
+            buttonDelete.setOnClickListener {
+                diaryData.apply {
+                    diaryViewModel.deleteDiary(this!!)
+                }
+                finish()
+            }
+
             toolbar.title = if (isEdit) "Mengubah Diary" else "Membuat Diary"
+            buttonDelete.visibility = if (isEdit) View.VISIBLE else View.GONE
             imageButtonPreviewDiaryMedia.setOnClickListener { openGallery() }
         }
     }

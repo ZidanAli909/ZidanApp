@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/mainFragment_home"
-        android:name="com.zidan.zidanapp.MainFragment.MainHomeFragment"
+        android:name="com.zidan.zidanapp.Fragments.Main.MainHomeFragment"
         tools:layout="@layout/fragment_main_home"/>
 
     <fragment
         android:id="@+id/mainFragment_map"
-        android:name="com.zidan.zidanapp.MainFragment.MainMapFragment"
+        android:name="com.zidan.zidanapp.Fragments.Main.MainMapFragment"
         tools:layout="@layout/fragment_main_map"/>
 
     <fragment
         android:id="@+id/mainFragment_collection"
-        android:name="com.zidan.zidanapp.MainFragment.MainCollectionFragment"
+        android:name="com.zidan.zidanapp.Fragments.Main.MainCollectionFragment"
         tools:layout="@layout/fragment_main_collection"/>
 
 </navigation>
