@@ -50,7 +50,7 @@ class MainHomeFragment : Fragment(), DiaryAdapter.OnItemClickListener {
                 diaryViewModel.getDiaryList().collect {
                     val adapter = DiaryAdapter(it)
                     recyclerViewDiaryList.setHasFixedSize(true)
-                    recyclerViewDiaryList.layoutManager = LinearLayoutManager(requireContext())
+                    recyclerViewDiaryList.layoutManager = GridLayoutManager(requireContext(), 2)
                     adapter.onItemClickListener = this@MainHomeFragment
                     recyclerViewDiaryList.adapter = adapter
                 }

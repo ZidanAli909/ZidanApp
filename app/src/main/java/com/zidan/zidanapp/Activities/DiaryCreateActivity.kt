@@ -84,6 +84,7 @@ class DiaryCreateActivity : AppCompatActivity() {
                         loadedImage
                     )
                 )
+                println("Sukses membuat diary:\n${title}\n${description}")
                 finish()
             }
 
@@ -91,6 +92,7 @@ class DiaryCreateActivity : AppCompatActivity() {
                 diaryData.apply {
                     diaryViewModel.deleteDiary(this!!)
                 }
+                println("Sukses menghapus diary")
                 finish()
             }
 

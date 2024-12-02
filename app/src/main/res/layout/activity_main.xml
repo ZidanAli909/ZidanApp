@@ -35,8 +35,10 @@
         android:id="@+id/main_bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/main_bottomnavigation"
-        android:paddingBottom="5dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:menu="@menu/main_bottomnavigation"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
