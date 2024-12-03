@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -85,6 +86,7 @@ class DiaryCreateActivity : AppCompatActivity() {
                     )
                 )
                 println("Sukses membuat diary:\n${title}\n${description}")
+                Toast.makeText(this@DiaryCreateActivity, "Sukses membuat diary!", Toast.LENGTH_SHORT).show()
                 finish()
             }
 
@@ -151,7 +153,6 @@ class DiaryCreateActivity : AppCompatActivity() {
                         Glide.with(this@DiaryCreateActivity).load(loadedImage).into(imageButtonPreviewDiaryMedia)
                     }
                 } else {
-
                     // Gunakan gambar asli, ubah jadi ByteArray, lalu tampilkan
                     val stream = ByteArrayOutputStream()
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
@@ -159,7 +160,6 @@ class DiaryCreateActivity : AppCompatActivity() {
                     binding.apply {
                         Glide.with(this@DiaryCreateActivity).load(loadedImage).into(imageButtonPreviewDiaryMedia)
                     }
-
                 }
                 isClicked = false
             } catch (e: IOException) {

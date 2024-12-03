@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-parcelize")
+    id("kotlin-kapt")
 }
 
 android {
@@ -64,6 +65,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     // Room
     implementation(libs.androidx.room.common)
+    kapt ("androidx.room:room-compiler:2.6.1")
     // GPlay Service: Maps
     implementation(libs.play.services.maps)
 }

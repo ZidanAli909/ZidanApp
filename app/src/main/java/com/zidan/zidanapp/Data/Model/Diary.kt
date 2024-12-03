@@ -5,6 +5,7 @@ import androidx.room.*
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
+@Entity(tableName = "diaries")
 data class Diary (
     @PrimaryKey(autoGenerate = true) val id : Int,
     val title: String,

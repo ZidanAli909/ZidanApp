@@ -6,10 +6,10 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface DiaryDao {
-    @Query("SELECT * FROM diary")
+    @Query("SELECT * FROM diaries")
     fun getDiaryList(): Flow<MutableList<Diary>>
 
-    @Query("SELECT * FROM diary WHERE id=:id")
+    @Query("SELECT * FROM diaries WHERE id=:id")
     suspend fun getDiaryById(id: Int): Diary?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
