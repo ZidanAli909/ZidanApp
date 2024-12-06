@@ -14,9 +14,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.zidan.zidanapp.Activities.DiaryCreateActivity
 import com.zidan.zidanapp.Activities.DiaryDetailsActivity
 import com.zidan.zidanapp.Adapters.DiaryAdapter
+import com.zidan.zidanapp.Adapters.LoadingStateAdapter
 import com.zidan.zidanapp.Data.Model.Diary
 import com.zidan.zidanapp.ViewModel.DiaryViewModel
 import com.zidan.zidanapp.databinding.FragmentMainHomeBinding
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class MainHomeFragment : Fragment(), DiaryAdapter.OnItemClickListener {
@@ -48,14 +50,23 @@ class MainHomeFragment : Fragment(), DiaryAdapter.OnItemClickListener {
 
     private fun initViews() {
         with(binding) {
+            // Initialize adapter
+            val diaryAdapter = DiaryAdapter()
+            diaryAdapter.onItemClickListener = this@MainHomeFragment
+
+            recyclerViewDiaryList.apply {
+                setHasFixedSize(true)
+                recyclerViewDiaryList.layoutManager = GridLayoutManager(requireContext(), 2)
+                adapter = diaryAdapter.withLoadStateFooter(
+                    footer = LoadingStateAdapter {
+                        diaryAdapter.retry()
+                    }
+                )
+            }
+
             lifecycleScope.launch {
-                diaryViewModel.getDiaryList().collect {
-                    val adapter = DiaryAdapter(it)
-                    recyclerViewDiaryList.setHasFixedSize(true)
-                    recyclerViewDiaryList.layoutManager = GridLayoutManager(requireContext(), 2)
-                    //recyclerViewDiaryList.layoutManager = LinearLayoutManager(requireContext())
-                    adapter.onItemClickListener = this@MainHomeFragment
-                    recyclerViewDiaryList.adapter = adapter
+                diaryViewModel.diaryPagingData.collectLatest { pagingData ->
+                    diaryAdapter.submitData(pagingData)
                 }
             }
         }

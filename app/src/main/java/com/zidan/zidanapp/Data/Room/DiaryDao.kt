@@ -10,7 +10,7 @@ interface DiaryDao {
     @Query("SELECT * FROM diaries")
     fun getDiaryList(): Flow<MutableList<Diary>>
 
-    @Query("SELECT * FROM diaries")
+    @Query("SELECT * FROM diaries ORDER BY id ASC")
     fun getDiaryPagingSource(): PagingSource<Int, Diary>
 
     @Query("SELECT * FROM diaries WHERE id=:id")

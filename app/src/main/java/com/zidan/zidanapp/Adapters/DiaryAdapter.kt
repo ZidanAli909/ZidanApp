@@ -2,13 +2,14 @@ package com.zidan.zidanapp.Adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.zidan.zidanapp.Data.Model.Diary
 import com.zidan.zidanapp.databinding.RecyclerviewDiaryitemsBinding
 
-class DiaryAdapter(private val diaryList: MutableList<Diary>)
-    : RecyclerView.Adapter<DiaryAdapter.DiaryViewHolder>() {
+class DiaryAdapter : PagingDataAdapter<Diary, DiaryAdapter.DiaryViewHolder>(DIFF_CALLBACK) {
 
     lateinit var onItemClickListener: OnItemClickListener
 
@@ -28,17 +29,25 @@ class DiaryAdapter(private val diaryList: MutableList<Diary>)
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiaryViewHolder {
-        return DiaryViewHolder(RecyclerviewDiaryitemsBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-    }
-
-    override fun getItemCount(): Int {
-        return diaryList.size
+        val binding = RecyclerviewDiaryitemsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return DiaryViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: DiaryViewHolder, position: Int) {
-        holder.bindData(diaryList[position])
-        holder.itemView.setOnClickListener {
-            onItemClickListener.onItemClick(diaryList[position])
+        val diary = getItem(position)
+        if (diary != null) {
+            holder.bindData(diary)
+        }
+    }
+
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Diary>() {
+            override fun areItemsTheSame(oldItem: Diary, newItem: Diary): Boolean {
+                return oldItem.id == newItem.id
+            }
+            override fun areContentsTheSame(oldItem: Diary, newItem: Diary): Boolean {
+                return oldItem == newItem
+            }
         }
     }
 }

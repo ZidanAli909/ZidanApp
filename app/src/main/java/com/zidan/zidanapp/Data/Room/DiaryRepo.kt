@@ -19,7 +19,7 @@ class DiaryRepo(private val diaryDao: DiaryDao) {
         return Pager(
             config = PagingConfig(
                 pageSize = 6,
-                enablePlaceholders = true
+                enablePlaceholders = false
             ),
             pagingSourceFactory = { diaryDao.getDiaryPagingSource() }
         ).flow
