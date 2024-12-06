@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.zidan.zidanapp.Activities.DiaryCreateActivity
+import com.zidan.zidanapp.Activities.DiaryDetailsActivity
 import com.zidan.zidanapp.Adapters.DiaryAdapter
 import com.zidan.zidanapp.Data.Model.Diary
 import com.zidan.zidanapp.ViewModel.DiaryViewModel
@@ -61,9 +62,8 @@ class MainHomeFragment : Fragment(), DiaryAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(item: Diary) {
-        val intent = Intent(requireContext(), DiaryCreateActivity::class.java)
+        val intent = Intent(requireContext(), DiaryDetailsActivity::class.java)
         intent.putExtra(DiaryCreateActivity.INTENT_KEY_DIARY_ID, item.id)
-        intent.putExtra(DiaryCreateActivity.INTENT_KEY, DiaryCreateActivity.EDIT_KEY)
         startActivity(intent)
     }
 }

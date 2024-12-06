@@ -18,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.zidan.zidanapp.Data.Model.Diary
 import com.zidan.zidanapp.R
@@ -91,11 +92,19 @@ class DiaryCreateActivity : AppCompatActivity() {
             }
 
             buttonDelete.setOnClickListener {
-                diaryData.apply {
-                    diaryViewModel.deleteDiary(this!!)
+                val dialog = MaterialAlertDialogBuilder(this@DiaryCreateActivity)
+                dialog.setTitle(resources.getString(R.string.dialog_title_warning))
+                dialog.setMessage(resources.getString(R.string.dialog_delete_description))
+                dialog.setPositiveButton(resources.getString(R.string.dialog_choice_yes)) { dialog, which ->
+                    diaryData.apply {
+                        diaryViewModel.deleteDiary(this!!)
+                    }
+                    finish()
                 }
-                println("Sukses menghapus diary")
-                finish()
+                dialog.setNegativeButton(resources.getString(R.string.dialog_choice_no)) { dialog, which ->
+                    dialog.dismiss()
+                }
+                dialog.show()
             }
 
             toolbar.title = if (isEdit) "Mengubah Diary" else "Membuat Diary"

@@ -50,4 +50,12 @@
     <!--Media Strings-->
     <string name="title_activity_media">Memilih Media</string>
 
+    <!--All Dialogs Strings-->
+    <string name="dialog_title_warning">Perhatian</string>
+    <string name="dialog_choice_yes">Iya</string>
+    <string name="dialog_choice_no">Tidak</string>
+    <string name="dialog_choice_ok">OK</string>
+    <string name="dialog_choice_cancel">Batal</string>
+    <string name="dialog_delete_description">Apakah anda ingin menghapus diary ini?</string>
+
 </resources>

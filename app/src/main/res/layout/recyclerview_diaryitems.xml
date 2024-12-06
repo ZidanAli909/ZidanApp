@@ -3,13 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
     android:layout_width="match_parent"
-    android:layout_height="225dp">
+    android:layout_height="225dp"
+    app:cardCornerRadius="5dp">
 
     <ImageView
         android:id="@+id/imageView_media"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
+        android:background="@color/black"
         app:srcCompat="@drawable/template_diarymedia_portrait" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,9 +26,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textSize="12dp"
+            android:textSize="13dp"
             android:maxLines="3"
-            android:text="@string/placeholder_content"/>
+            android:text="@string/placeholder_title"/>
 
         <TextView
             android:id="@+id/textView_description"
@@ -37,7 +39,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="10dp"
-            android:textSize="10dp"
+            android:textSize="11dp"
             android:text="@string/placeholder_content"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

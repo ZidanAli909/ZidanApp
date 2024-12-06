@@ -7,4 +7,90 @@
     android:layout_height="match_parent"
     tools:context=".Activities.DiaryDetailsActivity">
 
+    <ImageView
+        android:id="@+id/imageView_media"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/template_diarymedia_portrait" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Text.Diary.Title"
+                android:text="@string/placeholder_title" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <TextView
+                android:id="@+id/textView_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Text.Diary.Detail"
+                android:text="@string/placeholder_content" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/button_back"
+        style="?attr/materialIconButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="20dp"
+        app:iconSize="25dp"
+        app:icon="@drawable/icon_baseline_arrow_back_24"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_delete"
+            style="?attr/materialIconButtonFilledTonalStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_marginRight="15dp"
+            android:padding="15dp"
+            app:iconSize="20dp"
+            app:icon="@drawable/icon_baseline_delete_24"/>
+
+        <Button
+            android:id="@+id/button_edit"
+            style="?attr/materialIconButtonFilledStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:padding="15dp"
+            app:iconSize="20dp"
+            app:icon="@drawable/icon_baseline_edit_24"/>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

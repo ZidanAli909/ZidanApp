@@ -48,5 +48,14 @@
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
     </style>
 
+    <style name="Text.Diary.Detail" parent="Base.Theme.ZidanApp2">
+        <item name="android:textSize">6pt</item>
+    </style>
+
+    <style name="Text.Diary.Title" parent="Base.Theme.ZidanApp2">
+        <item name="android:textSize">10pt</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="Theme.ZidanApp2" parent="Base.Theme.ZidanApp2" />
 </resources>
