@@ -86,8 +86,8 @@ class DiaryCreateActivity : AppCompatActivity() {
                         loadedImage
                     )
                 )
-                println("Sukses membuat diary:\n${title}\n${description}")
-                Toast.makeText(this@DiaryCreateActivity, "Sukses membuat diary!", Toast.LENGTH_SHORT).show()
+                val toastTxt = if (isEdit) "Sukses mengubah diary!" else "Sukses membuat diary!"
+                Toast.makeText(this@DiaryCreateActivity, toastTxt, Toast.LENGTH_SHORT).show()
                 finish()
             }
 
@@ -99,6 +99,7 @@ class DiaryCreateActivity : AppCompatActivity() {
                     diaryData.apply {
                         diaryViewModel.deleteDiary(this!!)
                     }
+                    Toast.makeText(this@DiaryCreateActivity, "Sukses menghapus diary!", Toast.LENGTH_SHORT).show()
                     finish()
                 }
                 dialog.setNegativeButton(resources.getString(R.string.dialog_choice_no)) { dialog, which ->

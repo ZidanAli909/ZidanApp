@@ -66,6 +66,8 @@ dependencies {
     // Room
     implementation(libs.androidx.room.common)
     kapt ("androidx.room:room-compiler:2.6.1")
+    // Paging
+    implementation(libs.androidx.paging.runtime)
     // GPlay Service: Maps
     implementation(libs.play.services.maps)
 }

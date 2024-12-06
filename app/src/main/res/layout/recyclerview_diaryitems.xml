@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
     android:layout_width="match_parent"
-    android:layout_height="225dp"
+    android:layout_height="250dp"
     app:cardCornerRadius="5dp">
 
     <ImageView
@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:textSize="13dp"
+            style="@style/Text.DiaryPreview.Title"
             android:maxLines="3"
             android:text="@string/placeholder_title"/>
 
@@ -39,7 +39,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="10dp"
-            android:textSize="11dp"
+            style="@style/Text.DiaryPreview.Detail"
             android:text="@string/placeholder_content"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

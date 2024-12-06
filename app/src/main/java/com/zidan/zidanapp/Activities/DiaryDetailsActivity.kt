@@ -1,7 +1,9 @@
 package com.zidan.zidanapp.Activities
 
+import android.animation.LayoutTransition
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -52,6 +54,19 @@ class DiaryDetailsActivity : AppCompatActivity() {
                     Glide.with(this@DiaryDetailsActivity).load(diaryData?.media).into(imageViewMedia)
                     loadedImage = diaryData?.media
                 }
+            }
+            // Diary Card
+            textViewDescription.visibility = View.GONE
+            //cardViewDetails.layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
+            cardViewDetails.setOnClickListener {
+                val v = if (textViewDescription.visibility == View.GONE)
+                    View.VISIBLE
+                else View.GONE
+                val i = if (textViewDescription.visibility == View.GONE)
+                    R.drawable.icon_baseline_expand_up_24
+                else R.drawable.icon_baseline_expand_down_24
+                textViewDescription.visibility = v
+                imageViewExpandStatus.setImageResource(i)
             }
             // Back Button
             buttonBack.setOnClickListener {

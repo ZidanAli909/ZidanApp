@@ -58,4 +58,9 @@
     <string name="dialog_choice_cancel">Batal</string>
     <string name="dialog_delete_description">Apakah anda ingin menghapus diary ini?</string>
 
+    <!--All Snackbars Strings-->
+    <string name="snackbar_diary_created">Diary telah dibuat!</string>
+    <string name="snackbar_diary_deleted">Diary telah dihapus!</string>
+    <string name="snackbar_diary_edited">Diary telah dihapus!</string>
+
 </resources>

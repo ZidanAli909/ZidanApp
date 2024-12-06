@@ -28,12 +28,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_margin="15dp"
             android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView_expandStatus"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_baseline_expand_up_24"/>
 
             <TextView
                 android:id="@+id/textView_title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Text.Diary.Title"
                 android:text="@string/placeholder_title" />
@@ -44,9 +51,10 @@
 
             <TextView
                 android:id="@+id/textView_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 style="@style/Text.Diary.Detail"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:text="@string/placeholder_content" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -78,6 +86,7 @@
             android:layout_marginVertical="10dp"
             android:layout_marginRight="15dp"
             android:padding="15dp"
+            android:elevation="5dp"
             app:iconSize="20dp"
             app:icon="@drawable/icon_baseline_delete_24"/>
 
@@ -88,6 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
             android:padding="15dp"
+            android:elevation="5dp"
             app:iconSize="20dp"
             app:icon="@drawable/icon_baseline_edit_24"/>
 
