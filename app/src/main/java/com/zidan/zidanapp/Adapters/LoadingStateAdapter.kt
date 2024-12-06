@@ -1,5 +1,6 @@
 package com.zidan.zidanapp.Adapters
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
@@ -12,14 +13,15 @@ class LoadingStateAdapter(private val retry: () -> Unit) : LoadStateAdapter<Load
         holder: LoadingStateAdapter.LoadingStateViewHolder,
         loadState: LoadState
     ) {
-        TODO("Not yet implemented")
+        holder.bind(loadState)
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         loadState: LoadState
     ): LoadingStateAdapter.LoadingStateViewHolder {
-        TODO("Not yet implemented")
+        val binding = RecyclerviewLoadingitemsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return LoadingStateViewHolder(binding, retry)
     }
 
     class LoadingStateViewHolder(private val binding: RecyclerviewLoadingitemsBinding, retry: () -> Unit) : RecyclerView.ViewHolder(binding.root) {
