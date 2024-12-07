@@ -1,22 +1,19 @@
 package com.zidan.zidanapp.Activities
 
-import android.animation.LayoutTransition
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.zidan.zidanapp.Activities.DiaryCreateActivity.Companion
-import com.zidan.zidanapp.Data.Model.Diary
+import com.zidan.zidanapp.Data.Models.Diary
 import com.zidan.zidanapp.R
-import com.zidan.zidanapp.ViewModel.DiaryViewModel
+import com.zidan.zidanapp.ViewModels.DiaryViewModel
 import com.zidan.zidanapp.databinding.ActivityDiaryDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest

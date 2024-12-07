@@ -15,7 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.zidan.zidanapp.R
-import com.zidan.zidanapp.ViewModel.LoginViewModel
+import com.zidan.zidanapp.ViewModels.LoginViewModel
 import com.zidan.zidanapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

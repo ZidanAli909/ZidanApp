@@ -8,7 +8,6 @@ import android.graphics.Matrix
 import android.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -17,14 +16,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import com.zidan.zidanapp.Data.Model.Diary
+import com.zidan.zidanapp.Data.Models.Diary
 import com.zidan.zidanapp.R
-import com.zidan.zidanapp.ViewModel.DiaryViewModel
+import com.zidan.zidanapp.ViewModels.DiaryViewModel
 import com.zidan.zidanapp.databinding.ActivityDiaryCreateBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -32,7 +30,6 @@ import kotlinx.coroutines.launch
 import okio.IOException
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
-import kotlin.jvm.Throws
 
 @AndroidEntryPoint
 class DiaryCreateActivity : AppCompatActivity() {

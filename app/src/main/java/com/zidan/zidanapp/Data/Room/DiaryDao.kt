@@ -1,9 +1,12 @@
 package com.zidan.zidanapp.Data.Room
 
 import androidx.paging.DataSource
-import androidx.paging.PagingSource
-import androidx.room.*
-import com.zidan.zidanapp.Data.Model.Diary
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import com.zidan.zidanapp.Data.Models.Diary
 import kotlinx.coroutines.flow.Flow
 
 @Dao

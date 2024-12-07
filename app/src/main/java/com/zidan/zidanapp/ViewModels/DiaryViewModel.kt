@@ -1,4 +1,4 @@
-package com.zidan.zidanapp.ViewModel
+package com.zidan.zidanapp.ViewModels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -6,10 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
-import androidx.paging.toLiveData
-import com.zidan.zidanapp.Data.Model.Diary
+import com.zidan.zidanapp.Data.Models.Diary
 import com.zidan.zidanapp.Data.Room.DiaryDB
 import com.zidan.zidanapp.Data.Room.DiaryDao
 import com.zidan.zidanapp.Data.Room.DiaryRepo

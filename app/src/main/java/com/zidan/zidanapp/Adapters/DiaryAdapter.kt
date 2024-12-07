@@ -6,7 +6,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.zidan.zidanapp.Data.Model.Diary
+import com.zidan.zidanapp.Data.Models.Diary
 import com.zidan.zidanapp.databinding.RecyclerviewDiaryitemsBinding
 
 class DiaryAdapter : PagedListAdapter<Diary, DiaryAdapter.DiaryViewHolder>(DIFF_CALLBACK) {

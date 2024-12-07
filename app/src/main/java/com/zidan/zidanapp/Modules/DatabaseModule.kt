@@ -20,7 +20,7 @@ object DatabaseModule {
         return Room.databaseBuilder(
             context,
             DiaryDB::class.java,
-            "diary_database" // Replace with your actual database name
+            "diary_database"
         ).build()
     }
 

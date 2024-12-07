@@ -1,4 +1,4 @@
-package com.zidan.zidanapp.ViewModel
+package com.zidan.zidanapp.ViewModels
 
 import android.app.Application
 import androidx.datastore.core.DataStore

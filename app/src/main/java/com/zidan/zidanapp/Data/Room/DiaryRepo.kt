@@ -1,10 +1,7 @@
 package com.zidan.zidanapp.Data.Room
 
 import androidx.paging.DataSource
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import com.zidan.zidanapp.Data.Model.Diary
+import com.zidan.zidanapp.Data.Models.Diary
 import kotlinx.coroutines.flow.Flow
 
 class DiaryRepo(private val diaryDao: DiaryDao) {
