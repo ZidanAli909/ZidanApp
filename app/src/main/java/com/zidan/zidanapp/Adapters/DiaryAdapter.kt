@@ -2,14 +2,14 @@ package com.zidan.zidanapp.Adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.zidan.zidanapp.Data.Model.Diary
 import com.zidan.zidanapp.databinding.RecyclerviewDiaryitemsBinding
 
-class DiaryAdapter : PagingDataAdapter<Diary, DiaryAdapter.DiaryViewHolder>(DIFF_CALLBACK) {
+class DiaryAdapter : PagedListAdapter<Diary, DiaryAdapter.DiaryViewHolder>(DIFF_CALLBACK) {
 
     lateinit var onItemClickListener: OnItemClickListener
 
@@ -19,24 +19,30 @@ class DiaryAdapter : PagingDataAdapter<Diary, DiaryAdapter.DiaryViewHolder>(DIFF
 
     inner class DiaryViewHolder(private val binding: RecyclerviewDiaryitemsBinding)
         : RecyclerView.ViewHolder(binding.root) {
-            fun bindData(diary: Diary) {
-                with(binding) {
-                    Glide.with(binding.root).load(diary.media).into(imageViewMedia)
-                    textViewTitle.text = diary.title
-                    textViewDescription.text = diary.description
-                }
+        fun bindData(diary: Diary) {
+            with(binding) {
+                Glide.with(binding.root).load(diary.media).into(imageViewMedia)
+                textViewTitle.text = diary.title
+                textViewDescription.text = diary.description
             }
         }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiaryViewHolder {
-        val binding = RecyclerviewDiaryitemsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = RecyclerviewDiaryitemsBinding.inflate(inflater, parent, false)
         return DiaryViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: DiaryViewHolder, position: Int) {
-        val diary = getItem(position)
+        val diary: Diary? = getItem(position)
         if (diary != null) {
             holder.bindData(diary)
+            holder.itemView.setOnClickListener {
+                if (::onItemClickListener.isInitialized) onItemClickListener.onItemClick(diary)
+            }
+        } else {
+            holder.itemView.setOnClickListener(null)
         }
     }
 

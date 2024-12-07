@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-parcelize")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -65,10 +66,17 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     // Room
     implementation(libs.androidx.room.common)
-    kapt ("androidx.room:room-compiler:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
     // Paging
     implementation(libs.androidx.paging.runtime)
     implementation(libs.androidx.room.paging)
+    // Hilt
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
     // GPlay Service: Maps
     implementation(libs.play.services.maps)
+}
+
+kapt {
+    correctErrorTypes = true
 }

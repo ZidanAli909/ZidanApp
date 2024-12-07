@@ -8,7 +8,8 @@ import com.zidan.zidanapp.Data.Model.Diary
 
 @Database(
     entities = [Diary::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class DiaryDB: RoomDatabase() {
     abstract val diaryDao: DiaryDao

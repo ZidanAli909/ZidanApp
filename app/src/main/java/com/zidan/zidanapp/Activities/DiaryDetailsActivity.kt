@@ -18,9 +18,11 @@ import com.zidan.zidanapp.Data.Model.Diary
 import com.zidan.zidanapp.R
 import com.zidan.zidanapp.ViewModel.DiaryViewModel
 import com.zidan.zidanapp.databinding.ActivityDiaryDetailsBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class DiaryDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDiaryDetailsBinding
     private var loadedImage: ByteArray? = null

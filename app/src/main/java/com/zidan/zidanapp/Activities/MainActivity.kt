@@ -17,8 +17,10 @@ import androidx.navigation.ui.setupWithNavController
 import com.zidan.zidanapp.R
 import com.zidan.zidanapp.ViewModel.LoginViewModel
 import com.zidan.zidanapp.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var toolbar: Toolbar

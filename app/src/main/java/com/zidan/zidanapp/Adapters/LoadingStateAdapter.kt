@@ -39,7 +39,5 @@ class LoadingStateAdapter(private val retry: () -> Unit) : LoadStateAdapter<Load
                 textViewMessage.isVisible = loadState is LoadState.Error
             }
         }
-
-        }
-
+    }
 }

@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -16,11 +19,14 @@ import com.zidan.zidanapp.Activities.DiaryDetailsActivity
 import com.zidan.zidanapp.Adapters.DiaryAdapter
 import com.zidan.zidanapp.Adapters.LoadingStateAdapter
 import com.zidan.zidanapp.Data.Model.Diary
+import com.zidan.zidanapp.Data.Room.DiaryDB
 import com.zidan.zidanapp.ViewModel.DiaryViewModel
 import com.zidan.zidanapp.databinding.FragmentMainHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainHomeFragment : Fragment(), DiaryAdapter.OnItemClickListener {
     private lateinit var binding: FragmentMainHomeBinding
 
@@ -49,26 +55,17 @@ class MainHomeFragment : Fragment(), DiaryAdapter.OnItemClickListener {
     }
 
     private fun initViews() {
+        val adapter = DiaryAdapter()
+        adapter.onItemClickListener = this@MainHomeFragment
         with(binding) {
-            // Initialize adapter
-            val diaryAdapter = DiaryAdapter()
-            diaryAdapter.onItemClickListener = this@MainHomeFragment
-
             recyclerViewDiaryList.apply {
+                this.adapter = adapter
                 setHasFixedSize(true)
-                recyclerViewDiaryList.layoutManager = GridLayoutManager(requireContext(), 2)
-                adapter = diaryAdapter.withLoadStateFooter(
-                    footer = LoadingStateAdapter {
-                        diaryAdapter.retry()
-                    }
-                )
+                layoutManager = GridLayoutManager(requireContext(), 2)
             }
-
-            lifecycleScope.launch {
-                diaryViewModel.diaryPagingData.collectLatest { pagingData ->
-                    diaryAdapter.submitData(pagingData)
-                }
-            }
+        }
+        diaryViewModel.diaryPagedList.observe(viewLifecycleOwner) { pagedList ->
+            adapter.submitList(pagedList)
         }
     }
 

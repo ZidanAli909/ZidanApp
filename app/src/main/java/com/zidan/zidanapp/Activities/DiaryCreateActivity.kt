@@ -1,7 +1,9 @@
 package com.zidan.zidanapp.Activities
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.media.ExifInterface
 import android.net.Uri
@@ -24,6 +26,7 @@ import com.zidan.zidanapp.Data.Model.Diary
 import com.zidan.zidanapp.R
 import com.zidan.zidanapp.ViewModel.DiaryViewModel
 import com.zidan.zidanapp.databinding.ActivityDiaryCreateBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import okio.IOException
@@ -31,6 +34,7 @@ import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import kotlin.jvm.Throws
 
+@AndroidEntryPoint
 class DiaryCreateActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDiaryCreateBinding
     private lateinit var toolbar: Toolbar
@@ -124,62 +128,74 @@ class DiaryCreateActivity : AppCompatActivity() {
         }
     }
 
+    fun getScaledBitmap(imageUri: Uri, context: Context, maxWidth: Int, maxHeight: Int): Bitmap {
+        val options = BitmapFactory.Options()
+        options.inJustDecodeBounds = true
+        val inputStream = context.contentResolver.openInputStream(imageUri)
+        BitmapFactory.decodeStream(inputStream, null, options)
+        inputStream?.close()
+
+        // Kalkulasi inSampleSize dan menge-decode bitmap dengan inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, maxWidth, maxHeight)
+        options.inJustDecodeBounds = false
+        val scaledBitmap = BitmapFactory.decodeStream(context.contentResolver.openInputStream(imageUri), null, options)
+        return scaledBitmap!!
+    }
+
+    fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Int, reqHeight: Int): Int {
+        val height = options.outHeight
+        val width = options.outWidth
+        var inSampleSize = 1
+        if (height > reqHeight || width > reqWidth) {
+            val halfHeight = height / 2
+            val halfWidth = width / 2
+            while ((halfHeight / inSampleSize) > reqHeight && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2
+            }
+        }
+        return inSampleSize
+    }
+
+    fun compressImage(bitmap: Bitmap): ByteArray {
+        val outputStream = ByteArrayOutputStream()
+        var quality = 90
+        bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream)
+
+        // Check the file size after the initial compression
+        while (outputStream.toByteArray().size > 2 * 1024 * 1024 && quality > 20) {
+            outputStream.reset()
+            quality -= 10
+            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream)
+        }
+        return outputStream.toByteArray()
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.data != null) {
             val imageUri = data.data
-            try {
-                // Ambil ukuran file dalam satuan Bytes.
-                val inputStream: InputStream = imageUri?.let { contentResolver.openInputStream(it) }!!
-                val fileSizeInBytes = inputStream.available()
-                inputStream.close()
-
-                // Konversikan ke MegaBytes.
-                val fileSizeInMB = fileSizeInBytes / (1024.0 * 1024.0)
-
-                // Ambil bitmap serta periksa apakah perlu dirotasi
-                var bitmap = MediaStore.Images.Media.getBitmap(contentResolver, imageUri)
-                bitmap = rotateImageIfRequired(bitmap, imageUri)
-
-                // Periksa ukuran File
-                if (fileSizeInMB > 2.0) {
-
-                    // Jika masih terlalu besar, lakukan kompresi
-                    val outputStream = ByteArrayOutputStream()
-                    var quality = 90 // Initial quality
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream)
-
-                    // Turunkan kualitas hingga di bawah 2 MB
-                    while (outputStream.toByteArray().size > 2 * 1024 * 1024) {
-                        outputStream.reset()
-                        quality -= 10
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream)
-                    }
-
-                    // Konversikan dalam bentuk ByteArray lalu tampilkan gambar hasil kompresi
-                    loadedImage = outputStream.toByteArray()
+            if (imageUri != null) {
+                try {
+                    // Ambil bitmap
+                    var bitmap = getScaledBitmap(imageUri, this, 1024, 1024) // Di-scaled awal untuk mencegah memori berlebih
+                    bitmap = rotateImageIfRequired(bitmap, imageUri) // Cek jika perlu di-rotate
+                    loadedImage = compressImage(bitmap) // Kompresi
                     binding.apply {
                         Glide.with(this@DiaryCreateActivity).load(loadedImage).into(imageButtonPreviewDiaryMedia)
                     }
-                } else {
-                    // Gunakan gambar asli, ubah jadi ByteArray, lalu tampilkan
-                    val stream = ByteArrayOutputStream()
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
-                    loadedImage = stream.toByteArray()
-                    binding.apply {
-                        Glide.with(this@DiaryCreateActivity).load(loadedImage).into(imageButtonPreviewDiaryMedia)
-                    }
+                    isClicked = false
+                } catch (e: IOException) {
+                    val snackbar = Snackbar.make(
+                        binding.root, "Gagal mengambil foto!", Snackbar.LENGTH_SHORT
+                    ).show()
+                    isClicked = false
+                } catch (e: OutOfMemoryError) {
+                    Snackbar.make(
+                        binding.root, "Foto terlalu besar untuk diproses!", Snackbar.LENGTH_SHORT
+                    ).show()
+                    isClicked = false
                 }
-                isClicked = false
-            } catch (e: IOException) {
-                val snackbar = Snackbar.make(
-                    binding.root,
-                    "Gagal mengambil foto.",
-                    Snackbar.LENGTH_SHORT
-                )
-                snackbar.show()
-                isClicked = false
             }
         }
         isClicked = false
