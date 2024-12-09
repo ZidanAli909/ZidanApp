@@ -20,7 +20,8 @@ class LoadingStateAdapter(private val retry: () -> Unit) : LoadStateAdapter<Load
         parent: ViewGroup,
         loadState: LoadState
     ): LoadingStateAdapter.LoadingStateViewHolder {
-        val binding = RecyclerviewLoadingitemsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = RecyclerviewLoadingitemsBinding.inflate(inflater, parent, false)
         return LoadingStateViewHolder(binding, retry)
     }
 

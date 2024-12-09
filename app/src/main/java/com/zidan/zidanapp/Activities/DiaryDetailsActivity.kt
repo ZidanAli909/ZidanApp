@@ -49,10 +49,22 @@ class DiaryDetailsActivity : AppCompatActivity() {
                 diaryViewModel.stateGetDiary.collectLatest {
                     diaryData = it
                     textViewTitle.text = diaryData?.title
+                    textViewFullTitle.text = diaryData?.title
                     textViewDescription.text = diaryData?.description
+                    textViewFullDescription.text = diaryData?.description
                     Glide.with(this@DiaryDetailsActivity).load(diaryData?.media).into(imageViewMedia)
                     loadedImage = diaryData?.media
                 }
+            }
+            // Media Diary or Full Text Diary?
+            if (diaryData?.media?.isEmpty() == true) {
+                layoutFull.visibility = View.VISIBLE
+                cardViewDetails.visibility = View.GONE
+                imageViewMedia.visibility = View.GONE
+            } else {
+                layoutFull.visibility = View.GONE
+                cardViewDetails.visibility = View.VISIBLE
+                imageViewMedia.visibility = View.VISIBLE
             }
             // Diary Card
             textViewDescription.visibility = View.GONE
@@ -62,8 +74,8 @@ class DiaryDetailsActivity : AppCompatActivity() {
                     View.VISIBLE
                 else View.GONE
                 val i = if (textViewDescription.visibility == View.GONE)
-                    R.drawable.icon_baseline_expand_up_24
-                else R.drawable.icon_baseline_expand_down_24
+                    R.drawable.icon_baseline_expand_down_24
+                else R.drawable.icon_baseline_expand_up_24
                 textViewDescription.visibility = v
                 imageViewExpandStatus.setImageResource(i)
             }

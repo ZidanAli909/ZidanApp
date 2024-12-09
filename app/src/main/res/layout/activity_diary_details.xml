@@ -15,6 +15,37 @@
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/template_diarymedia_portrait" />
 
+    <LinearLayout
+        android:id="@+id/layout_full"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="30dp"
+        app:layout_constraintTop_toBottomOf="@id/button_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView_full_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Text.Diary.Title"
+            android:text="@string/placeholder_title" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"/>
+
+        <TextView
+            android:id="@+id/textView_full_description"
+            style="@style/Text.Diary.Detail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/placeholder_content" />
+    </LinearLayout>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_details"
         android:layout_width="match_parent"
@@ -28,7 +59,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="5dp"
             android:orientation="vertical">
 
             <ImageView
@@ -54,7 +87,6 @@
                 style="@style/Text.Diary.Detail"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp"
                 android:text="@string/placeholder_content" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

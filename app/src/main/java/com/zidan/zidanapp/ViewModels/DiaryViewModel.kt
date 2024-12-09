@@ -34,7 +34,7 @@ class DiaryViewModel @Inject constructor(
         diaryPagedList = LivePagedListBuilder(
                 dao.getDiaryListPaged(),
         PagedList.Config.Builder()
-            .setPageSize(6)
+            .setPageSize(4)
             .setEnablePlaceholders(true)
             .build()
         ).build()

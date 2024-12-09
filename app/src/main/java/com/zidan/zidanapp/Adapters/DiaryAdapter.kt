@@ -1,6 +1,7 @@
 package com.zidan.zidanapp.Adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -21,7 +22,8 @@ class DiaryAdapter : PagedListAdapter<Diary, DiaryAdapter.DiaryViewHolder>(DIFF_
         : RecyclerView.ViewHolder(binding.root) {
         fun bindData(diary: Diary) {
             with(binding) {
-                Glide.with(binding.root).load(diary.media).into(imageViewMedia)
+                if (diary.media?.isNotEmpty() == true) Glide.with(binding.root).load(diary.media).into(imageViewMedia)
+                else imageViewMedia.visibility = View.GONE
                 textViewTitle.text = diary.title
                 textViewDescription.text = diary.description
             }

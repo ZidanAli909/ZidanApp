@@ -12,6 +12,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.zidan.zidanapp.Activities.DiaryCreateActivity
 import com.zidan.zidanapp.Activities.DiaryDetailsActivity
 import com.zidan.zidanapp.Adapters.DiaryAdapter
+import com.zidan.zidanapp.Adapters.LoadingStateAdapter
 import com.zidan.zidanapp.Data.Models.Diary
 import com.zidan.zidanapp.ViewModels.DiaryViewModel
 import com.zidan.zidanapp.databinding.FragmentMainHomeBinding
