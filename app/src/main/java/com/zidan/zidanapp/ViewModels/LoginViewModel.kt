@@ -29,7 +29,6 @@ class LoginViewModel(app: Application): AndroidViewModel(app) {
             it[stringPreferencesKey("rememberedUsername")] = rememberedUsername
         }
     }
-
     suspend fun getRememberedUsername(): String? {
         return dataStore.data.first()[stringPreferencesKey("rememberedUsername")]
     }
